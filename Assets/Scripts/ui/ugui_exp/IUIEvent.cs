@@ -12,12 +12,12 @@ namespace UnityEngine.UI
         public Action<MyDragData> EventOnDrag;
         public Action<MyDragData> EventOnDragStart;
         public Action<MyDragData> EventOnDragEnd;
-
+        public Action<My3DRoomImage> EventOnUIRoomLoadComlete;
 
         void OnClickEvent(MonoBehaviour behaviour) { EventOnClick?.Invoke(behaviour); }
         void OnDragEvent(MyDragData myDragData) { EventOnDrag?.Invoke(myDragData); }
         void OnDragStartEvent(MyDragData myDragData) { EventOnDragStart?.Invoke(myDragData); }
         void OnDragEndEvent(MyDragData myDragData) { EventOnDragEnd?.Invoke(myDragData); }
-
+        void OnUIRoomLoadComlete(My3DRoomImage my3DRoomImage) { EventOnUIRoomLoadComlete?.Invoke(my3DRoomImage); }
     }
 }

@@ -10,8 +10,8 @@ using System.Collections;
 
 public enum DropEventType
 {
-    None=0,
-    HorizontalRotation=1,
+    None = 0,
+    HorizontalRotation = 1,
     VerticalRotation = 0,
     FreeRotation = 0,
 }
@@ -25,13 +25,15 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
     public bool usePointLight = false;//使用点光源
     [SerializeField]
     public DropEventType dropType = DropEventType.None;
+    [HideInInspector]
+    public Camera roomCamera;
+    [HideInInspector]
+    public GameObject rootObj;
 
     private MyImage _texObj = null;
     private GameObject childGameObject;
-    private GameObject rootObj;
-    private bool  _isInit = false;
-    private bool  _setCamera = false;
-    private Camera roomCamera;
+    private bool _isInit = false;
+    private bool _setCamera = false;
     private bool CameraInitEnd = false;
     private void Update()
     {
@@ -53,7 +55,7 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
 
     private void DoSetCamera()
     {
-       
+
     }
 
     private void __initRoom()
@@ -77,8 +79,8 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
             childGameObject.name = gameObject.name + "'s childGameObject";
 
         }
-        childGameObject.transform.position = new Vector3(UnityEngine.Random.Range(-100,-1000),
-            UnityEngine.Random.Range(-100, -1000)-1000, UnityEngine.Random.Range(-100, -1000));
+        childGameObject.transform.position = new Vector3(UnityEngine.Random.Range(-100, -1000),
+            UnityEngine.Random.Range(-100, -1000) - 1000, UnityEngine.Random.Range(-100, -1000));
         childGameObject.SetActive(true);
         if (!rootObj)
         {
@@ -99,12 +101,26 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
             go.transform.localPosition = Vector3.zero;
             go.transform.localRotation = Quaternion.identity;
             CreatePointLight();
-            StartCoroutine(SetCameraTexture()) ;
+            StartCoroutine(SetCameraTexture());
         }
 
     }
 
     RenderTexture _renderTexture;
+    public string ResName
+    {
+        get => resName;
+        set
+        {
+            bool isInit = value != resName;
+            resName = value;
+            if (isInit)
+            {
+                __initRoom();
+            }
+        }
+    }
+
     /// <summary>
     /// 将摄像机照到的内容映射到image中
     /// </summary>
@@ -132,11 +148,11 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
 
         }
         roomCamera.clearFlags = CameraClearFlags.SolidColor;
-        roomCamera.backgroundColor = new Color(0,0,0,0);
-        roomCamera.allowMSAA =false;
-        roomCamera.targetTexture =null;
+        roomCamera.backgroundColor = new Color(0, 0, 0, 0);
+        roomCamera.allowMSAA = false;
+        roomCamera.targetTexture = null;
         roomCamera.useOcclusionCulling = true;
-        roomCamera.depth =-10;
+        roomCamera.depth = -10;
         roomCamera.enabled = false;
         yield return null;
         roomCamera.enabled = true;
@@ -148,8 +164,8 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
         {
             var _camera_size = _texObj.rectTransform.rect.size;
             float accuaryValue = 1f;
-            _renderTexture = RenderTexture.GetTemporary((int)(_camera_size.x *accuaryValue),
-                (int)(_camera_size.y * accuaryValue),24,RenderTextureFormat.Default);
+            _renderTexture = RenderTexture.GetTemporary((int)(_camera_size.x * accuaryValue),
+                (int)(_camera_size.y * accuaryValue), 24, RenderTextureFormat.Default);
             _renderTexture.useMipMap = false;
         }
         if (_renderTexture)
@@ -164,9 +180,9 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
         {
             if (_renderTexture)
                 _texObj.texture = roomCamera.targetTexture;
-            //SendMessageUpwards("UIRoomLoadComlete",this);
+            SendMessageUpwards("OnUIRoomLoadComlete", this);
         }
-        _texObj.color = new Color(_texObj.color.r, _texObj.color.g, _texObj.color.b,1);
+        _texObj.color = new Color(_texObj.color.r, _texObj.color.g, _texObj.color.b, 1);
         CameraInitEnd = true;
     }
     /// <summary>
@@ -174,7 +190,7 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
     /// </summary>
     private void CreatePointLight()
     {
-       
+
     }
 
     private void InitContent()
@@ -182,7 +198,7 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
         _texObj = GetComponent<MyImage>();
         if (!_texObj)
             _texObj = gameObject.AddComponent<MyImage>();
-        _texObj.color = new Color(_texObj.color.r, _texObj.color.g, _texObj.color.b,0);
+        _texObj.color = new Color(_texObj.color.r, _texObj.color.g, _texObj.color.b, 0);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -196,8 +212,8 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
             var rats_y = rat.y;
             var rats_z = rat.z;
 
-            if(dropType== DropEventType.HorizontalRotation || dropType == DropEventType.FreeRotation)
-                rats_y-=((eventData.delta).x/Screen.width)*360f;
+            if (dropType == DropEventType.HorizontalRotation || dropType == DropEventType.FreeRotation)
+                rats_y -= ((eventData.delta).x / Screen.width) * 360f;
             if (dropType == DropEventType.VerticalRotation || dropType == DropEventType.FreeRotation)
                 rats_z += ((eventData.delta).y / Screen.height) * 360f;
 
@@ -207,11 +223,11 @@ public class My3DRoomImage : MonoBehaviour, IDragHandler, IPointerClickHandler, 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-       
+
     }
 }

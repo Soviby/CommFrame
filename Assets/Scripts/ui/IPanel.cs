@@ -26,7 +26,7 @@ public class PanelBase : IPanel
 
     public GameObject gameObject { get => _gameObject;  }
     public Camera uiCamera { get => LogicMM.cameraContol.UiCamera;  }
-    protected List<Coroutine> _tasks = new List<Coroutine>();
+    public MyTaskRunner myTaskRunner = new MyTaskRunner(5);
 
     public virtual void Display(bool b)
     {
@@ -65,7 +65,18 @@ public class PanelBase : IPanel
 
     }
 
-    public void RunUITask(IEnumerator e) {
-        _tasks.Add(GameMng.instance.StartCoroutine(e));
+    public virtual void OnUIRoomLoadComlete(My3DRoomImage my3DRoomImage)
+    {
+
+    }
+
+    public virtual void Update()
+    {
+
+    }
+
+    public void RunUITask(IEnumerator e)
+    {
+        myTaskRunner.Run(e);
     }
 }

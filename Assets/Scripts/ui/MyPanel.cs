@@ -33,8 +33,7 @@ public class MyPanel :PanelBase
         if (gameObject)
             gameObject.SetActive(false);
 
-        _tasks.ForEach(a => GameMng.instance.StopCoroutine(a));
-        _tasks.Clear();
+        myTaskRunner.Stop();
         //销毁
         OnDestroy();
     }
@@ -55,8 +54,7 @@ public class MyPanel :PanelBase
         canvas.worldCamera = uiCamera;
         IsSightVisible = true;
 
-        _tasks.ForEach(a=> GameMng.instance.StopCoroutine(a));
-        _tasks.Clear();
+        myTaskRunner.Stop();
     }
     void BuildPanel() {
         //从res中获取预制体

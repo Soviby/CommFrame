@@ -10,5 +10,20 @@ public class GameMng : MonoSingleton<GameMng>
         LogicMM.logicLoaderControl.StartGame();
     }
 
+    private void OnApplicationQuit()
+    {
+        //游戏关闭
+        SoundManager.StopAllSound();
+    }
 
+    private void FixedUpdate()
+    {
+        if (ModuleBase.ModuleList != null && ModuleBase.ModuleList.Count > 0)
+        {
+            foreach (var modlue in ModuleBase.ModuleList)
+            {
+                modlue.Update();
+            }
+        }
+    }
 }

@@ -18,7 +18,7 @@ public abstract class ModuleBase {
     }
     public virtual void OnAppInit() { }//全局初始化
 
-    public virtual void OnFrameUpdate() { }
+    public virtual void Update() { }
 
     public void RunTask(IEnumerator e)
     {

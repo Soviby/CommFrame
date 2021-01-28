@@ -322,3 +322,7 @@ F:\workspace\unity3d\2DUILogic\Temp\Bin\Debug\Unity.2D.Psdimporter.Editor.pdb
 F:\workspace\unity3d\2DUILogic\Temp\Bin\Debug\Unity.2D.IK.Editor.pdb
 F:\workspace\unity3d\2DUILogic\Temp\Bin\Debug\Unity.2D.IK.Runtime.pdb
 F:\workspace\unity3d\2DUILogic\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+D:\workspace\CommFrame\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+D:\workspace\CommFrame\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+D:\workspace\CommFrame\obj\Debug\Assembly-CSharp.dll
+D:\workspace\CommFrame\obj\Debug\Assembly-CSharp.pdb

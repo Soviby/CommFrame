@@ -10,10 +10,4 @@ public class MainCityBehavior : SceneBehavior<MainCityModel>
         LogicMM.sceneControl.RegisterBehavior(SceneID.SCENE_ID_MAINCITY, this);
     }
 
-    public override void LeaveBehavior()
-    {
-        base.LeaveBehavior();
-    }
-
-
 }

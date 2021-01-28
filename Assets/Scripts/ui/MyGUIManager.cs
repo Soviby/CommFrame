@@ -37,5 +37,22 @@ public class MyGUIManager :MonoBehaviour
         if (!panel.gameObject) return;
         panel.gameObject.transform.SetParent(transform);
     }
+
+    List<PanelBase> panelBases;
+    private void FixedUpdate()
+    {
+        if (m_panelMap != null)
+        {
+            panelBases = m_panelMap.Values.ToList();
+            foreach (var panel in panelBases)
+            {
+                panel.myTaskRunner.Update();
+                if (panel.IsVisible)
+                    panel.Update();
+            }
+
+        }
+
+    }
 }
 

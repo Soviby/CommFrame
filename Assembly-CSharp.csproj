@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{1B39EE65-76F0-6528-1408-1CD093B1AA62}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -63,6 +64,10 @@
     <Compile Include="Assets\Scripts\ui\MyPanel.cs" />
     <Compile Include="Assets\Scripts\ui\ugui_exp\IUIEvent.cs" />
     <Compile Include="Assets\Scripts\game\Camera\CameraContol.cs" />
+    <Compile Include="Assets\Scripts\utils\Log.cs" />
+    <Compile Include="Assets\Scripts\utils\MyTask.cs" />
+    <Compile Include="Assets\Scripts\utils\MyTaskRunner.cs" />
+    <Compile Include="Assets\Scripts\utils\ThreadManager.cs" />
     <Compile Include="Assets\Scripts\utils\TransformUtils.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Scripts\sceneBehavior\MainCity\MainCityModel.cs" />
@@ -120,17 +125,17 @@
     <Compile Include="Assets\Scripts\data\Utils\CsvHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\Shaders\FadeShader.shader" />
-     <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
-     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
-     <None Include="Assets\Demigiant\DemiLib\Core\DemiLib.dll" />
-     <None Include="Assets\Demigiant\DOTween\DOTween.dll" />
-     <None Include="Assets\Demigiant\DOTweenPro\DOTweenPro.dll" />
-     <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
-     <None Include="Assets\Demigiant\DemiLib\Core\DemiLib.xml" />
-     <None Include="Assets\Demigiant\DOTweenPro\DOTweenPro.XML" />
-     <None Include="Assets\Demigiant\DOTween\readme.txt" />
-     <None Include="Assets\Resources\ttf\word.txt" />
+    <None Include="Assets\Shaders\FadeShader.shader" />
+    <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
+    <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Demigiant\DemiLib\Core\DemiLib.dll" />
+    <None Include="Assets\Demigiant\DOTween\DOTween.dll" />
+    <None Include="Assets\Demigiant\DOTweenPro\DOTweenPro.dll" />
+    <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
+    <None Include="Assets\Demigiant\DemiLib\Core\DemiLib.xml" />
+    <None Include="Assets\Demigiant\DOTweenPro\DOTweenPro.XML" />
+    <None Include="Assets\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\Resources\ttf\word.txt" />
     <Reference Include="UnityEngine">
       <HintPath>D:\develop\2020.1.12f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

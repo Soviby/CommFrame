@@ -20,22 +20,7 @@ public static class LogicMM
             modlue.OnAppInit();
             //处理属性绑定（网络协议）
         }
-        //
-        GameMng.instance.StartCoroutine(FrameUpdate());
-
     }
 
-    static IEnumerator FrameUpdate() {
-        while (true)
-        {
-            foreach (var modlue in ModuleBase.ModuleList)
-            {
-                modlue.OnFrameUpdate();
-            }
-            yield return new WaitForSeconds(0.02f);
-
-        }
-        
-    }
 }
 

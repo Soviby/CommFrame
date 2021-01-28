@@ -12,9 +12,10 @@ public class SceneModel :SmartModel<SceneControl>
     {
         get
         {
-            return DB.SceneBaseMap[control._cur_scene_id];
+            if (!DB.SceneBaseMap.ContainsKey(control.curScene_id))
+                return null;
+            return DB.SceneBaseMap[control.curScene_id];
         }
     }
-
 }
 

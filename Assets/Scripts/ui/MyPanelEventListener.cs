@@ -19,11 +19,11 @@ namespace UnityEngine.UI
             _eventBase.EventOnDrag += OnDragEvent;
             _eventBase.EventOnDragStart += OnDragStartEvent;
             _eventBase.EventOnDragEnd += OnDragEndEvent;
+            _eventBase.EventOnUIRoomLoadComlete += OnUIRoomLoadComlete;
         }
 
         void OnClickEvent(MonoBehaviour behaviour)
         {
-
             _event.OnClick(behaviour);
         }
 
@@ -38,6 +38,10 @@ namespace UnityEngine.UI
         void OnDragEndEvent(MyDragData myDragData)
         {
             _event.OnDragEnd(myDragData);
+        }
+        void OnUIRoomLoadComlete(My3DRoomImage my3DRoomImage)
+        {
+            _event.OnUIRoomLoadComlete(my3DRoomImage);
         }
 
     }
